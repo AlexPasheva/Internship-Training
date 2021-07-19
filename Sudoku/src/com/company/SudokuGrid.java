@@ -11,8 +11,9 @@ public class SudokuGrid {
     private static char[][] parseProblem(Scanner input) {
         String[] contents= new String[9];
         int r=0;
-        while (input.hasNext()){
+        while (r<9){
             contents[r]=input.nextLine();
+            r++;
         }
 
         char[][] problem = new char[9][9];
@@ -25,8 +26,7 @@ public class SudokuGrid {
         return problem;
     }
 
-    private boolean notInRow(int row)
-    {
+    private boolean notInRow(int row) {
         HashSet<Character> st = new HashSet<>();
 
         for(int i = 0; i < 9; i++) {
@@ -40,8 +40,7 @@ public class SudokuGrid {
         return true;
     }
 
-    private boolean notInCol(int col)
-    {
+    private boolean notInCol(int col) {
         HashSet<Character> st = new HashSet<>();
 
         for(int i = 0; i < 9; i++) {
@@ -55,8 +54,7 @@ public class SudokuGrid {
         return true;
     }
 
-    private boolean notInBox(int startRow, int startCol)
-    {
+    private boolean notInBox(int startRow, int startCol) {
         HashSet<Character> st = new HashSet<>();
 
         for(int row = 0; row < 3; row++) {
@@ -73,14 +71,12 @@ public class SudokuGrid {
         return true;
     }
 
-    private boolean isValid(int row, int col)
-    {
+    private boolean isValid(int row, int col) {
         return notInRow(row) && notInCol(col) &&
                 notInBox(row - row % 3, col - col % 3);
     }
 
-    public boolean isValidConfig()
-    {
+    public boolean isValidConfig() {
         for(int i = 0; i < 9; i++) {
             for(int j = 0; j < 9; j++) {
                 if (!isValid(i, j)) {
