@@ -1,29 +1,12 @@
 package com.company;
 import java.util.HashSet;
-import java.util.Scanner;
+
 
 public class SudokuGrid {
     private char[][] grid;
 
-    SudokuGrid(Scanner input) {
-        this.grid = parseProblem(input);
-    }
-    private static char[][] parseProblem(Scanner input) {
-        String[] contents= new String[9];
-        int r=0;
-        while (r<9){
-            contents[r]=input.nextLine();
-            r++;
-        }
-
-        char[][] problem = new char[9][9];
-        for (int i = 0; i < 9; i++) {
-            String row = contents[i];
-            for (int j = 0; j < 9; j++) {
-                problem[i][j] = row.charAt(j);
-            }
-        }
-        return problem;
+    SudokuGrid(char[][] input) {
+        this.grid = input;
     }
 
     private boolean notInRow(int row) {
@@ -86,5 +69,5 @@ public class SudokuGrid {
         }
         return true;
     }
-
 }
+
