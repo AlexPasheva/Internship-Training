@@ -5,7 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-	    SudokuGrid problem = new SudokuGrid(input);
+        SudokuGridReader gr = new SudokuGridReader();
+        SudokuGrid problem = gr.parseProblem(input);
         System.out.println(problem.isValidConfig());
     }
 }
