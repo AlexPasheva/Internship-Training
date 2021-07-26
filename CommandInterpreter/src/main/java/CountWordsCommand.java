@@ -1,10 +1,12 @@
 import java.util.*;
+
+/**
+ * Implementation of the count-words command
+ */
 public class CountWordsCommand implements Command{
-    String name = "count-words";
+    private static final String NAME = "count-words";
     @Override
     /**
-     * Returns the result of the execution of a count-words command.
-     *
      * This method executes the count-words command and returns as a result
      * a string with the number of words the input has.
      *
@@ -18,6 +20,6 @@ public class CountWordsCommand implements Command{
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 }
