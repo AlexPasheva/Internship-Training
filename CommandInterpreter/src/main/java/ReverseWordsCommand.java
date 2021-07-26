@@ -1,10 +1,12 @@
 import java.util.*;
+
+/**
+ * Implementation of the reverse-words command
+ */
 public class ReverseWordsCommand implements Command{
-    String name = "reverse-words";
+    private static final String NAME = "reverse-words";
     @Override
     /**
-     * Returns the result of the execution of a reverse-words command.
-     *
      * This method executes the reverse-words command and returns as a result
      * a string with the words of the input but in reversed order.
      *
@@ -22,6 +24,6 @@ public class ReverseWordsCommand implements Command{
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 }
