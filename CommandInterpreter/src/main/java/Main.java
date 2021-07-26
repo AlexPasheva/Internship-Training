@@ -2,7 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    /**
+     * This method executes the entered commands in the sin
+     *
+     * @throws              IllegalArgumentException if the command with that name
+     *                      does not exist.
+     */
+    public void CommandExecutor(){
         CommandScanner scanned = new CommandScanner(new Scanner(System.in));
         ArrayList<String> input = scanned.scan();
         CommandEngine engine = new CommandEngine();
@@ -23,5 +29,8 @@ public class Main {
                 System.out.println(e);
             }
         }
+    }
+    public void main(String[] args) {
+        CommandExecutor();
     }
 }
