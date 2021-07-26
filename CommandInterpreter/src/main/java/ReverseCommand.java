@@ -1,9 +1,11 @@
+
+/**
+ * Implementation of the reverse command
+ */
 public class ReverseCommand implements Command{
-    String name = "reverse";
+    private static final String NAME = "reverse";
     @Override
     /**
-     * Returns the result of the execution of a reverse command.
-     *
      * This method executes the reverse command and returns as a result
      * a string with the input written backwards.
      *
@@ -15,6 +17,6 @@ public class ReverseCommand implements Command{
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 }
