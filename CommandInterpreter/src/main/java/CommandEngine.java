@@ -5,13 +5,16 @@ import java.util.*;
  */
 public class CommandEngine {
     private final Map<String, Command> commands = new HashMap<String, Command>();
+    private DataStore data;
     /**
      * This method fills the map with available commands and is completely wrong
      */
     private void fillMap() {
         List<Command> commandList = Arrays.asList(new ReverseCommand(),
                                                   new ReverseWordsCommand(),
-                                                  new CountWordsCommand());
+                                                  new CountWordsCommand(),
+                                                  new SetCommand(data),
+                                                  new GetCommand(data));
         for (Command cmd: commandList) {
             commands.put(cmd.getName(), cmd);
         }
