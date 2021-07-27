@@ -19,7 +19,8 @@ public class SetCommand implements Command{
      * @return        the result of the execution as a string
      */
     public String execute(String input){
-        String[] attributes = input.split("\\s+");
+        String[] attributes = input.split("\\s");
+        attributes = input.trim().split("\\s+");
         String name = attributes[0];
         String type = attributes[1];
         String value = attributes[2];
