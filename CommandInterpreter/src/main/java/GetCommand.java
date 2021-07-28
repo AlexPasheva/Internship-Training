@@ -20,11 +20,11 @@ public class GetCommand implements Command{
      * @return        the result of the execution as a string
      */
     public String execute(String input){
-        Pair<String, String> typeAndValue = data.getValueAndTypeByName(input);
+        Variable typeAndValue = data.getVariable(input);
         if(typeAndValue==null) {
             return "Err";
         }
-        return new String("[" + typeAndValue.getFirst() + "] " + typeAndValue.getSecond());
+        return new String("[" + typeAndValue.getValue() + "] " + typeAndValue.getType());
     }
 
     public String getName() {
