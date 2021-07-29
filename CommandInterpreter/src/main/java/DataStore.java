@@ -4,7 +4,7 @@ import java.util.*;
  */
 public class DataStore {
     private final Map<String, Variable> memory = new HashMap<String, Variable>();
-    private DataEngine engine;
+    private DataFactory factory;
     public Variable getVariable(String name) {
         return memory.get(name);
     }
@@ -18,8 +18,7 @@ public class DataStore {
      *                does not exist in the map of available variables.
      */
     public void putVariable(String name, String type, String value) {
-        Variable var = engine.findVariable(type);
-        var.setValue(value);
+        Variable var = factory.create(type, value);
         memory.put(name,var);
     }
 }
