@@ -8,6 +8,7 @@ public class CalcCommand implements Command{
     @Override
 
     public String execute(String input){
+        OperationsFactory factory = new OperationsFactory();
         String[] attributes = input.split("\\s");
         attributes = input.trim().split("\\s+");
         String saveHere = attributes[0];
@@ -19,12 +20,16 @@ public class CalcCommand implements Command{
         if(varOperand1==null || varOperand2==null) {
             return "Err";
         }
-        OperationEngine engine = new OperationEngine();
-        Variable result = engine.execute(operation, varOperand1, varOperand2);
-        Variable valueToSave = data.getVariable(saveHere);
-        valueToSave.setValue(result.getValue());
-        data.putVariable(saveHere, valueToSave.getType(), valueToSave.getValue());
-        return new String("OK");
+        try {
+            OperationKeyForHash key = new OperationKeyForHash(operation, varOperand1, varOperand2);
+            Operation resOp = factory.create(key, varOperand1, varOperand2);
+            Variable result = resOp.execute();
+            data.putVariable(saveHere, result.getType(), result.getValue());
+            return new String("OK");
+        }
+        catch (Exception e){
+            return "Err";
+        }
     }
 
     public String getName() {

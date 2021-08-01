@@ -16,8 +16,7 @@ public class DataFactory {
         }
     }
     private void fillMap() {
-        List<VariableFactory> variableFactories = Arrays.asList(new NumberFactory(),
-                new StringFactory());
+        List<VariableFactory> variableFactories = Arrays.asList(new NumberFactory(), new StringFactory());
         for (VariableFactory var: variableFactories) {
             types.put(var.getType(), var);
         }

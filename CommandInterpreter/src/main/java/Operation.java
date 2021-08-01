@@ -1,4 +1,6 @@
 public interface Operation {
-    Variable execute(String operation, Variable operand1, Variable operand2);
-    String getName();
+    String getOperation();
+    Variable getOperand1();
+    Variable getOperand2();
+    Variable execute();
 }
