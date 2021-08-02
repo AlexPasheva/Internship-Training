@@ -21,9 +21,8 @@ public class CalcCommand implements Command{
             return "Err";
         }
         try {
-            OperationKeyForHash key = new OperationKeyForHash(operation, varOperand1, varOperand2);
-            Operation resOp = factory.create(key, varOperand1, varOperand2);
-            Variable result = resOp.execute();
+            OperationKeyForHash key = new OperationKeyForHash(operation, varOperand1.getType(), varOperand2.getType());
+            Variable result = factory.execute(key, varOperand1, varOperand2);
             data.putVariable(saveHere, result.getType(), result.getValue());
             return new String("OK");
         }

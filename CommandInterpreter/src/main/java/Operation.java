@@ -1,6 +1,4 @@
 public interface Operation {
-    String getOperation();
-    Variable getOperand1();
-    Variable getOperand2();
-    Variable execute();
+    OperationKeyForHash getOperation();
+    Variable execute(Variable operand1, Variable operand2);
 }

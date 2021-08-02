@@ -1,21 +1,12 @@
 public class StringAddition implements Operation{
-    private static final String NAME = "+";
-    private Variable operand1;
-    private Variable operand2;
-    public StringAddition(Variable operand1, Variable operand2){
-        this.operand1 = operand1;
-        this.operand2 = operand2;
+    private final static OperationKeyForHash OPERATION = new OperationKeyForHash
+            ("+", "string","numbe");
+
+    public OperationKeyForHash getOperation() {
+        return OPERATION;
     }
-    public String getOperation(){
-        return NAME;
-    }
-    public Variable getOperand1(){
-        return operand1;
-    }
-    public Variable getOperand2(){
-        return operand2;
-    }
-    public Variable execute(){
+
+    public Variable execute(Variable operand1, Variable operand2){
         String res = operand1.getValue() + operand2.getValue();
         return new StringVar(res);
     }
