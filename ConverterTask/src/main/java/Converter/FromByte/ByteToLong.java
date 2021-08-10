@@ -3,6 +3,10 @@ import Converter.Converter;
 public class ByteToLong implements Converter{
     private final static Class<Byte> CLASSFROM = Byte.class;
     private final static Class<Long> CLASSТО = Long.class;
+    private final static boolean PRECISSIONLOSS = false;
+    public static boolean isPrecissionloss() {
+        return PRECISSIONLOSS;
+    }
     public Class<?> getClassFrom(){
         return CLASSFROM;
     }
@@ -10,9 +14,9 @@ public class ByteToLong implements Converter{
         return CLASSТО;
     }
     public Object convert(Object obj, Class<?> targetClass) {
-        if(obj.getClass()==CLASSFROM){
-            Byte copy = Byte.class.cast(obj);
-            return copy.longValue();
+        if (obj instanceof Byte) {
+            Byte val = (Byte) obj;
+            return val.longValue();
         }
         else {
             return null;

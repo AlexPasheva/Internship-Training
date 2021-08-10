@@ -3,6 +3,10 @@ import Converter.Converter;
 public class DoubleToFloat implements Converter{
     private final static Class<Double> CLASSFROM = Double.class;
     private final static Class<Float> CLASSТО = Float.class;
+    private final static boolean PRECISSIONLOSS = false;
+    public static boolean isPrecissionloss() {
+        return PRECISSIONLOSS;
+    }
     public Class<?> getClassFrom(){
         return CLASSFROM;
     }
@@ -10,9 +14,9 @@ public class DoubleToFloat implements Converter{
         return CLASSТО;
     }
     public Object convert(Object obj, Class<?> targetClass) {
-        if(obj.getClass()==CLASSFROM){
-            Double copy = Double.class.cast(obj);
-            return copy.floatValue();
+        if (obj instanceof Double) {
+            Double val = (Double) obj;
+            return val.floatValue();
         }
         else {
             return null;

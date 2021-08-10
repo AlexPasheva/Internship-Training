@@ -3,6 +3,10 @@ import Converter.Converter;
 public class IntegerToByte implements  Converter{
     private final static Class<Integer> CLASSFROM = Integer.class;
     private final static Class<Byte> CLASSТО = Byte.class;
+    private final static boolean PRECISSIONLOSS = true;
+    public static boolean isPrecissionloss() {
+        return PRECISSIONLOSS;
+    }
     public Class<?> getClassFrom(){
         return CLASSFROM;
     }
@@ -10,9 +14,9 @@ public class IntegerToByte implements  Converter{
         return CLASSТО;
     }
     public Object convert(Object obj, Class<?> targetClass) {
-        if(obj.getClass()==CLASSFROM){
-            Integer copy = Integer.class.cast(obj);
-            return copy.byteValue();
+        if (obj instanceof Integer){
+            Integer val = (Integer) obj;
+            return val.byteValue();
         }
         else {
             return null;

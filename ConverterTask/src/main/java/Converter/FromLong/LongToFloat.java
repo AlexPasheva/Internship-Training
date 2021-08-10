@@ -3,6 +3,10 @@ import Converter.Converter;
 public class LongToFloat implements Converter{
     private final static Class<Long> CLASSFROM = Long.class;
     private final static Class<Float> CLASSТО = Float.class;
+    private final static boolean PRECISSIONLOSS = true;
+    public static boolean isPrecissionloss() {
+        return PRECISSIONLOSS;
+    }
     public Class<?> getClassFrom(){
         return CLASSFROM;
     }
@@ -10,9 +14,9 @@ public class LongToFloat implements Converter{
         return CLASSТО;
     }
     public Object convert(Object obj, Class<?> targetClass) {
-        if(obj.getClass()==CLASSFROM){
-            Long copy = Long.class.cast(obj);
-            return copy.floatValue();
+        if (obj instanceof Long) {
+            Long val = (Long) obj;
+            return val.floatValue();
         }
         else {
             return null;

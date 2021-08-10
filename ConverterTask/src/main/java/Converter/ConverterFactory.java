@@ -31,10 +31,18 @@ public class ConverterFactory {
 
     private void fillMap() {
         List<Converter> converters = Arrays.asList(new ByteToDouble(), new ByteToFloat(),
-                new (), new LongConverter(), new IntegerConverter());
+                new ByteToInteger(), new ByteToLong(), new DoubleToByte(), new DoubleToFloat(), new DoubleToInteger(),
+                new DoubleToInteger(), new DoubleToLong(), new FloatToDouble(), new FloatToByte(), new FloatToInteger(),
+                new FloatToLong(), new IntegerToByte(), new IntegerToDouble(), new IntegerToFloat(), new IntegerToLong(),
+                new LongToByte(), new LongToDouble(), new LongToFloat(), new LongToInteger());
         for (Converter converter : converters) {
-            classes.put(converter.getType(), converter);
+            Pair<Class<?>, Class<?>> key = new Pair<>(converter.getClassFrom(), converter.getClassTo());
+            supportedConvertions.put(key, converter);
         }
+    }
+
+    public Map<Pair<Class<?>, Class<?>>, Converter> getSupportedConvertions() {
+        return supportedConvertions;
     }
 }
 
